@@ -1,2 +1,0 @@
-KERNEL=="ttyAMA[0-9]*", MODE="0666"
-KERNEL=="pps[0-9]*", MODE="0666"

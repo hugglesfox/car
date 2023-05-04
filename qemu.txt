@@ -1,2 +1,0 @@
-qemu-system-aarch64 -machine raspi3b -dtb bcm2710-rpi-3-b.dtb -kernel Image -sd sdcard.img -append "rw earlyprintk loglevel=8 console=ttyAMA0,115200 dwc_otg.lpm_enable=0 root=/dev/mmcblk0p2 rootfs=ext4 rootwait" -serial stdio
-
