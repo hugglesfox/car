@@ -1,0 +1,11 @@
+# How much memory in MB to assign to the GPU
+gpu_mem=16
+
+# Enable serial for GPS
+enable_uart=1
+
+# Setup pps
+dtoverlay=pps-gpio,gpiopin=4
+
+# Use ttyAMA0 for GPS
+dtoverlay=miniuart-bt
