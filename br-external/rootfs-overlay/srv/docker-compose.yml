@@ -1,0 +1,19 @@
+services:
+  prometheus:
+    image: prometheus
+    ports:
+      - 9090:9090
+    networks:
+      - service-net
+    volumes:
+      - /srv/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana
+    ports:
+      - 3000:3000
+    networks:
+      - service-net
+
+networks:
+  service-net:
