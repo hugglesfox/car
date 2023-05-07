@@ -16,6 +16,17 @@ services:
       - 3000:3000
     networks:
       - service-net
+  
+  elm_exporter:
+    build:
+      context: elm327-exporter
+      dockerfile: Containerfile
+    privileged: true
+    restart: always
+    networks:
+      - service-net
+    envrionment:
+      - ELM_PORT=/dev/rfcomm0
 
 networks:
   service-net:
