@@ -1,0 +1,3 @@
+[submodule "elm327-exporter"]
+	path = elm327-exporter
+	url = https://github.com/hugglesfox/elm327-exporter.git
