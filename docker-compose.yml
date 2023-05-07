@@ -50,5 +50,14 @@ services:
     environment:
       - ELM_PORT=/dev/rfcomm0
 
+  dht_exporter:
+    build:
+      context: dht11-exporter
+      dockerfile: Containerfile
+    privileged: true
+    restart: always
+    networks:
+      - internal
+
 networks:
   internal:
