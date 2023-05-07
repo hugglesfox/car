@@ -3,6 +3,7 @@ version: '3.3'
 services:
   prometheus:
     image: prom/prometheus
+    restart: always
     ports:
       - 9090:9090
     networks:
@@ -12,6 +13,7 @@ services:
 
   grafana:
     image: grafana/grafana
+    restart: always
     ports:
       - 3000:3000
     networks:
