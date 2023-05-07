@@ -1,0 +1,15 @@
+[Unit]
+Description=RFCOMM service
+After=bluetooth.service
+Requires=bluetooth.service
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/defaults/rfcomm
+ExecStart=/usr/bin/rfcomm bind $DEV $MAC
+RemainAfterExit=true
+ExecStop=/usr/bin/rfcomm release $DEV
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target

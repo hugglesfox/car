@@ -10,14 +10,10 @@ apt install -y \
 	dnsmasq \
 	docker-compose \
 	gpsd \
-	hostapd
+	hostapd \
+	rfcomm
 
 rfkill unblock all
-
-systemctl unmask hostapd
-systemctl enable hostapd
-
-systemctl enable docker
 
 cp config.txt /boot/config.txt
 cp cmdline.txt /boot/cmdline.txt
@@ -30,6 +26,17 @@ cp chrony.conf /etc/chrony/conf.d/car.conf
 cp hostapd.conf /etc/hostapd/hostapd.conf
 cp dnsmasq.conf /etc/dnsmasq.d/car.conf
 cp dhcpcd.conf /etc/dhcpcd.conf
+
+cp rfcomm.service /etc/systemd/system/rfcomm.service
+cp rfcomm /etc/defaults/rfcomm
+
+systemctl daemon-reload
+
+systemctl unmask hostapd
+
+systemctl enable hostapd
+systemctl enable rfcomm
+systemctl enable docker
 
 echo "192.168.0.1    car" >> /etc/hosts
 
