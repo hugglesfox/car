@@ -1,25 +1,11 @@
 version: '3.3'
 
 services:
-  traefik:
-    image: 'traefik'
-    command:
-      - '--metrics.prometheus=true'
-      - '--api.insecure=true'
-      - '--providers.docker=true'
-      - '--providers.docker.exposedbydefault=false'
-      - '--entrypoints.web.address=:80'
-    networks:
-      - internal
-    ports:
-      - 80:80
-      - 8080:8080
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-
   prometheus:
     image: prom/prometheus
     restart: always
+    ports:
+      - 80:9090
     networks:
       - internal
     volumes:
@@ -30,16 +16,6 @@ services:
       - traefik.http.routers.metrics.rule=Host(`metrics.car`)
       - traefik.http.routers.metrics.entrypoints=web
 
-  grafana:
-    image: grafana/grafana
-    restart: always
-    networks:
-      - internal
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.dashboard.rule=Host(`dash.car`)
-      - traefik.http.routers.dashboard.entrypoints=web
-  
   elm_exporter:
     build:
       context: elm327-exporter
