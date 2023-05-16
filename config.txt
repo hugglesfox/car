@@ -9,3 +9,10 @@ dtoverlay=pps-gpio,gpiopin=4
 
 # Use ttyAMA0 for GPS
 dtoverlay=miniuart-bt
+
+# Cabin temperature sensor
+dtoverlay=dht11,gpiopin=24
+
+# Trigger a shutdown when gpio 3 is pulled down
+dtoverlay=gpio-shutdown
+
