@@ -17,7 +17,7 @@ def is_firing(alert_name: str):
         )
         return True
 
-    for alert in resp["alerts"]:
+    for alert in resp["data"]["alerts"]:
         if alert["labels"]["alertname"] == alert_name:
             return alert["state"] == "firing"
 
