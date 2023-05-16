@@ -36,7 +36,7 @@ systemctl enable docker
 systemctl enable hostapd
 systemctl enable rfcomm
 
-echo "192.168.0.1  pi metrics dash" >> /etc/hosts
+echo "192.168.0.1  pi.car metrics.car dash.car" >> /etc/hosts
 
 docker-compose up -d
 
