@@ -1,0 +1,28 @@
+[tool.pdm]
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=23.3.0",
+]
+
+[project]
+name = "alert_indicator"
+version = "0.1.0"
+description = "Turn an LED on when a Prometheus alert is firing"
+authors = [
+    {name = "Hayley Hughes", email = "hayley@foxes.systems"},
+]
+dependencies = [
+    "gpiozero>=1.6.2",
+    "requests>=2.30.0",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm.scripts]
+format = "black src"

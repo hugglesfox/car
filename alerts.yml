@@ -1,0 +1,7 @@
+groups:
+  - name: alerts
+    rules:
+      - alert: ColdEngine
+        expr: coolant_temp < 90
+        annotations:
+          summary: The engine is under 90 degrees C

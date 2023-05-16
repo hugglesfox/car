@@ -24,6 +24,7 @@ services:
       - internal
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./alerts.yml:/etc/prometheus/alerts.yml
     labels:
       - traefik.enable=true
       - traefik.http.routers.metrics.rule=Host(`metrics.car`)
@@ -58,6 +59,19 @@ services:
     restart: always
     networks:
       - internal
+
+  alert_indicator:
+    build:
+      context: alert-indicator
+      dockerfile: Containerfile
+    privileged: true
+    restart: always
+    networks:
+      - internal
+    environment:
+      - LED_PIN=13
+      - PROMETHEUS_URL=http://prometheus:9090
+      - ALERT_NAME=ColdEngine
 
 networks:
   internal:
