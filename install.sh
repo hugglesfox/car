@@ -38,6 +38,7 @@ systemctl enable rfcomm
 
 systemctl disable dhcpcd
 systemctl enable systemd-networkd
+systemctl enable systemd-resolved
 
 echo "192.168.0.1  metrics.car" >> /etc/hosts
 
