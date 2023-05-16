@@ -24,7 +24,8 @@ cp etc/hostapd.conf /etc/hostapd/hostapd.conf
 
 cp default/* /etc/default/
 cp modules-load.d/* /etc/modules-load.d/
-cp systemd/* /etc/systemd/system/
+cp systemd/system/* /etc/systemd/system/
+cp systemd/network/* /etc/systemd/network/
 cp udev/* /etc/udev/rules.d/
 
 systemctl daemon-reload
@@ -35,7 +36,10 @@ systemctl enable docker
 systemctl enable hostapd
 systemctl enable rfcomm
 
-echo "192.168.0.1  pi.car metrics.car dash.car" >> /etc/hosts
+systemctl disable dhcpcd
+systemctl enable systemd-networkd
+
+echo "192.168.0.1  metrics.car" >> /etc/hosts
 
 docker-compose up -d
 
