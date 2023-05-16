@@ -10,8 +10,7 @@ apt install -y \
 	dnsmasq \
 	docker-compose \
 	gpsd \
-	hostapd \
-	rfcomm
+	hostapd
 
 rfkill unblock all
 
@@ -23,7 +22,7 @@ cp etc/dhcpcd.conf /etc/dhcpcd.conf
 cp etc/dnsmasq.conf /etc/dnsmasq.d/car.conf
 cp etc/hostapd.conf /etc/hostapd/hostapd.conf
 
-cp defaults/* /etc/defaults/
+cp default/* /etc/default/
 cp modules-load.d/* /etc/modules-load.d/
 cp systemd/* /etc/systemd/system/
 cp udev/* /etc/udev/rules.d/

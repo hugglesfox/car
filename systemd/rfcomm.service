@@ -5,7 +5,7 @@ Requires=bluetooth.service
 
 [Service]
 Type=oneshot
-EnvironmentFile=/etc/defaults/rfcomm
+EnvironmentFile=/etc/default/rfcomm
 ExecStart=/usr/bin/rfcomm bind $DEV $MAC
 RemainAfterExit=true
 ExecStop=/usr/bin/rfcomm release $DEV
