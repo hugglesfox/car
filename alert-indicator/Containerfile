@@ -20,4 +20,4 @@ FROM python:3.10
 ENV PYTHONPATH=/project/pkgs
 COPY --from=builder /project/__pypackages__/3.10/lib /project/pkgs
 
-ENTRYPOINT ["python", "-m", "cold_engine_indicator"]
+ENTRYPOINT ["python", "-m", "alert_indicator"]

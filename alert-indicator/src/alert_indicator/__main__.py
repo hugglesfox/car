@@ -9,7 +9,7 @@ led = LED(int(os.environ["LED_PIN"]))
 
 
 def is_firing(alert_name: str):
-    resp = requests.get("{}/api/v1/alerts".format(os.envrion["PROMETHEUS_URL"])).json()
+    resp = requests.get("{}/api/v1/alerts".format(os.environ["PROMETHEUS_URL"])).json()
 
     if resp["status"] == "error":
         logging.error(
@@ -32,4 +32,4 @@ while True:
     else:
         led.off()
 
-    time.sleep(os.getenv("POLL_TIME", 10))
+    time.sleep(float(os.getenv("POLL_TIME", 10)))
